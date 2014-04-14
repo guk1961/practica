@@ -1,0 +1,14 @@
+##parse("header.vm")
+##parse("topmenu.vm")
+#set($content="content.vm")
+<div id="middle">
+		<div id="container">
+			<div id="content">#parse("$content")
+			</div> <!--#content-->
+		</div><!-- #container-->
+
+</div><!-- #middle-->
+
+</div> <!--#wrapper -->
+
+##parse("footer.vm")

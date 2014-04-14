@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>CRON PROTON</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <script  type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="js/jquery.tablesorter.js"></script>
+    <meta name="title" content="" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+<!--	<link rel="stylesheet" href="css/home.css" type="text/css" media="screen" />-->
+	<link rel="stylesheet" href="css/contented/style.css" type="text/css" media="screen" />
+	
+	<script type="text/javascript" language="javascript">
+
+		jQuery(document).ready(function()
+    	{
+    	    jQuery("#license").tablesorter();
+        	jQuery("#test").tablesorter();
+
+        	jQuery("#myTable").tablesorter();
+        	jQuery("#docs").tablesorter();
+
+    	}
+	);
+
+  </script>
+	
+
+</head>
+<body>
+<!--<table class="main" valign="top">
+<table>
+  <tr>
+    <td valign="top" align="center"> -->
+    
+<div id="wrapper">
+
+<div id="header">
+<table>
+<tr color="#ff0000>
+<td>
+    <div id="logo">
+        <a href="" title="На главную">
+        <img alt="CRON PROTON" src="images/planner.png"/>
+        </a>
+	</div>
+</td>
+<td>
+        CRON PROTON
+</td>
+</tr>
+</table>
+</div><!-- #header-->

@@ -1,0 +1,12 @@
+#set($selected="support")
+#parse("header.vm")
+##parse("topmenu.vm")
+#set( $count = 0 )
+
+<div id="middle">
+
+<iframe src="http://itp/index.php?option=com_contact&view=contact&id=1%3Anameguk&catid=12%3Acontacts&Itemid=75" width="100%" height="800"></iframe>
+</div> <!--id="middle"-->
+##parse("middle.vm")
+#parse("footer.vm")
+

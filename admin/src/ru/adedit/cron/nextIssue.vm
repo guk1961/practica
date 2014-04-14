@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>перевод номеров выполнен</title>
+</head>
+<body>
+#set( $count = 0 )
+<table border="1" bgcolor="#eeeeee">
+
+
+<tr bgcolor=lightgray>
+    <td><b> </td>
+    <td><b>Издание</a></td>
+    <td><b>Текущий номер</td>
+    <td><b>Следующий номер</a></td>
+</tr>
+
+#foreach( $pub in $pubs )
+
+#set( $count = $count + 1 )
+#if ($pub.Code <100)
+#set($channel = $schs.getChannel($pub))
+#set($issueId = $issue.getId())
+#set($data	=	$sis.getIssue($issueId).getDeadline()) 
+	<tr>
+	<td>$count</td>
+	<td>$pub.Publication</td>
+	#if ($issueId > 0)
+		<td><b>$sis.getIssue($issueId).getName()</b></td>
+	#else
+		<td>номер не определен</td>
+	#end
+	<td>$sis.getIssueNextPub($data, $channel).getName()</td>
+	</tr>
+#end
+#end
+
+</table>
+<br>
+$curDate
+
+</body>
+</html>

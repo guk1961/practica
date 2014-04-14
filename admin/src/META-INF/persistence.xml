@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="cron">
+		<class>ru.adedit.cron.model.SmartUsrgrp</class>
+		<class>ru.adedit.cron.model.SmartUsers</class>
+		<class>ru.adedit.cron.model.SmartTickets</class>
+		<class>ru.adedit.cron.model.SmartTarget</class>
+		<class>ru.adedit.cron.model.SmartStates</class>
+		<class>ru.adedit.cron.model.SmartRouting</class>
+		<class>ru.adedit.cron.model.SmartPublication</class>
+		<class>ru.adedit.cron.model.SmartIssue</class>
+		<class>ru.adedit.cron.model.SmartGroups</class>
+		<class>ru.adedit.cron.model.SmartChannel</class>
+		<class>ru.adedit.cron.model.Log</class>
+		<class>ru.adedit.cron.model.DomainObject</class>
+	
+			<properties>
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://bw-woodwing:3306/enterprise" />
+			<property name="hibernate.connection.username" value="guk" />
+			<property name="hibernate.connection.password" value="lfrjnf" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+			<property name="hibernate.connection.pool_size" value="6" />
+			<property name="hibernate.connection.autoReconnect" value="true" />
+			<property name="hibernate.generate_statistics" value="false" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.use_sql_comments" value="false" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+	 	</properties>
+	
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,78 @@
+#set($selected="tickets")
+#parse("header.vm")
+##parse("topmenu.vm")
+#set( $count = 0 )
+
+
+#set($fio="-")
+#set($url="-")
+#set($usercolor="")
+
+<div class="pager-links">  
+
+Активных пользователей - <b>$total</b> 
+<a href="users">Весь список</a> - <b>$userService.getCount()</b>
+&nbsp страницы: #if ($pager && $pager.getPageLinks().size() > 1)
+
+    #foreach ($link in $pager.pageLinks)
+       #if ($link.Num==$pager.CurrentPage)
+            <b>$link</b>
+        #else
+            <u>$link</u>
+        #end
+    #end
+($pager.from ... $pager.to)
+<!--div class="pager-title"> Пользователи с $pager.from по $pager.to </div-->
+#end
+
+</div>
+
+#set( $count = ($pager.CurrentPage - 1)*$pager.PageSize )
+
+
+<table id="docs" class="tablesorter" cellspacing="1">
+
+<thead>
+<tr>
+    <th>#</th>
+    <th colspan="2">ФИО</th>
+    <th>Логин</th>
+    <th>Приложение</th>
+    <th>Версия</th>
+    <th>IP-адрес</th>
+    <th>Подключился</th>
+</tr>
+</thead>
+<!--<tbody align="left">-->
+
+##foreach( $ticket in $ticketlist )
+#foreach( $ticket in $ticketlist)
+#set( $count = $count + 1 )
+##if ($tools.getParity($count))
+##    #set($color="#f0f0f0")
+##else
+    #set($color="#ffffff")
+##end
+
+#set($user=$userService.getUser($ticket.Usr))
+##set($user=$ticketService.getUser($ticket.Usr))
+
+##set($user=$tm.getUser($ticket.Usr))
+
+<tr>
+<td>$count</td>
+<td bgcolor=$user.getTrackchangescolor()></td>
+<td><a href="/$context/users/$user.Id">$user.getFullname()</a></td>
+<td><a href=$user.Url>$ticket.Usr</a></td>
+<td>$ticket.Appname</td>
+<td>$ticket.Appversion</td>
+<td>$ticket.Clientip</td>
+<td>$ticket.Logon</td>
+</tr>
+#end
+
+<!--</tbody>-->
+</table>
+
+##parse("middle.vm")
+#parse("footer.vm")

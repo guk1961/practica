@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+<!-- the application context definition for the springapp DispatcherServlet -->
+
+
+<bean name="/" class="ru.adedit.controller.HomeController"/>
+<bean name="/users" class="ru.adedit.controller.UsersController"/>
+<!--  <bean name="/current" class="ru.adedit.controller.Current"/>
+<bean name="/log" class="ru.adedit.controller.Log"/>
+-->
+</beans>

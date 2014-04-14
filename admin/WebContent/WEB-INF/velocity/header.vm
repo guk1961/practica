@@ -1,0 +1,65 @@
+#set($context="admin")
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>CRON PROTON</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <script  type="text/javascript" src="/$context/js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="/$context/js/jquery.tablesorter.js"></script>
+    <meta name="title" content="" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+<!--	<link rel="stylesheet" href="css/home.css" type="text/css" media="screen" />-->
+	<link rel="stylesheet" href="/$context/css/contented/style.css" type="text/css" media="screen" />
+	
+	<script type="text/javascript" language="javascript">
+
+		jQuery(document).ready(function()
+    	{
+    	    jQuery("#license").tablesorter();
+        	jQuery("#test").tablesorter();
+        	jQuery("#myTable").tablesorter();
+        	jQuery("#pubs").tablesorter();
+        	jQuery("#users").tablesorter();
+        	jQuery("#groups").tablesorter();
+        	jQuery("#docs").tablesorter();
+        	$("table").tablesorter();
+
+    	}
+	);
+
+  </script>
+	
+
+</head>
+<body>
+<div id="container"> 
+
+<div id="header">
+
+<div id="title">Мониторинг РИС "ДМ-Редакция"</div>
+#parse("topmenu.vm")
+
+<!--
+<ul>
+<ul id="nav">
+    <li><a #if($selected=="dmir") class="selected" #end  href="/$context/dmir">Proton</a></li>
+    <li><a #if($selected=="cs") class="selected"  #end  href="/$context/cs">CS</a></li>
+    <li><a #if($selected=="licenses") class="selected" #end href="/$context/licenses">Лицензии</a></li>
+    <li><a #if($selected=="cronlog") class="selected" #end href="/$context/log">Задания</a></li>
+    <li><a #if($selected=="tickets") class="selected" #end href="/$context/tickets">Активные</a></li>
+    <li><a #if($selected=="users") class="selected" #end href="/$context/users">Пользователи</a></li>
+    <li><a #if($selected=="groups") class="selected" #end href="/$context/groups">Группы</a></li>
+    <li><a #if($selected=="pubs") class="selected" #end href="/$context/pubs">Издания</a></li>
+    <li><a #if($selected=="home") class="selected" #end href="/$context/home">Главная</a></li>
+</ul>
+</ul>
+-->
+</div> <!-- end header -->
+
+
+<!--
+<div id="slogan">
+  Ничто не слишком!
+</div>
+-->

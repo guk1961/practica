@@ -1,0 +1,13 @@
+<div id="footer">
+<div id="copyrightdesign">
+	Copyright &copy; 2013 издательство "Деловой мир". Все права защищены. | Разработчик Железцов Ю.К. (guk@d-mir.ru)  
+</div>
+<div id="footercontact">
+<a href="mailto:guk@d-mir.ru?Subject=Здравствуйте%20Юрий">
+	написать письмо</a>
+</div>
+</div><!-- #footer -->
+ 
+ </div id><!--="container"--> 
+ </body>
+</html>

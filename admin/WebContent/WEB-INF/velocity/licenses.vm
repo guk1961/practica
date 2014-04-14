@@ -1,0 +1,185 @@
+
+#set($selected="licenses")
+#parse("header.vm")
+##parse("topmenu.vm")
+
+#set( $count = 0 )
+#set( $licdesktop = 50 )
+#set( $licdesktoprest = 0 )
+#set( $licserver = 85 )
+#set( $licserverrest = 0 )
+#set( $liccs = 91 )
+#set( $liccsrest = 0 )
+
+#set($fio="-")
+#set($url="-")
+#set($web=0)
+#set($ind=0)
+#set($inc=0)
+#set($cs=0)
+#set($all=0)
+
+#set($webver="")
+#set($indver="")
+#set($incver="")
+#set($csver="")
+
+#foreach( $ticket in $ticketlist )
+    #if ("InDesign"==$ticket.Appname)
+        #set($ind=$ind+1)
+        #set($indver=$ticket.Appversion)
+    #end
+    #if ("InCopy"==$ticket.Appname)
+        #set($inc=$inc+1)
+        #set($incver=$ticket.Appversion)
+    #end
+    #if ("Web"==$ticket.Appname)
+        #set($web=$web+1)
+        #set($webver=$ticket.Appversion)
+    #end
+    #if ("Content Station"==$ticket.Appname)
+        #set($cs=$cs+1)
+        #set($csver=$ticket.Appversion)
+    #end
+#end
+#set( $all = $web+$ind+$inc+$cs)
+
+#set( $licdesktoprest = ($licdesktop - $ind - $inc))
+#set( $licserverrest = $licserver - $all )
+
+
+<b> Используется коннектов:<font size="3" color="green"> $all</font> из <font size="3" color="red"> 90</font> </b>
+
+
+<table id="docs" class="tablesorter" cellspacing="1">
+
+<thead>
+<tr bgcolor=lightgray>
+    <th>Приложение</th>
+    <th>Версия</th>
+    <th>Используется</th>
+    <th>Осталось</th>
+</tr>
+</thead>
+<tbody align="center">
+<tr>
+    <td align="left">InDesign</td>
+    <td>$indver</td>
+    <td>$ind</td>
+    <td>$licdesktoprest</td>
+</tr>
+<tr>
+    <td align="left" >InCopy</td>
+    <td>$incver</td>
+    <td>$inc</td>
+    <td>$licdesktoprest</td>
+</tr>
+<tr>
+    <td align="left" >WebАдмин</td>
+    <td>$webver</td>
+    <td>$web</td>
+    <td >$licserverrest</td>
+</tr>
+<tr>
+    <td align="left" >Content Station</td>
+    <td>$csver</td>
+    <td>$cs</td>
+    <td>$licserverrest</td>
+</tr>
+
+</tbody>
+</table>
+<a href="tickets">   Активные пользователи</a>
+
+
+
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <!--script type="text/javascript" src="js/google/jsapi.js"></script-->
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1', {'packages':['piechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      
+      function drawChart() {
+
+      // Create our data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Task');
+        data.addColumn('number', 'Hours per Day');
+        data.addRows([
+//          ['InDesign'+' $indver ', $ind ],
+//          ['InСopy'+' $incver ',$inc],
+//          ['WebAdmin'+' $webver ', $web],
+//          ['Content Station'+' $csver ', $cs],
+
+          ['InDesign $ind', $ind ],
+          ['InСopy $inc',$inc],
+          ['WebAdmin $web', $web],
+          ['Content Station $cs', $cs],
+        ]);
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, {width: 600, height: 340, is3D: true, title: ''});
+      }
+    </script>
+    <!--Div that will hold the pie chart-->
+    
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <!--script type="text/javascript" src="js/google/jsapi.js"></script-->
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1', {'packages':['piechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+      // Create our data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Task');
+        data.addColumn('number', 'Hours per Day');
+        data.addRows([
+          ['InDesign $licdesktoprest', $licdesktoprest],
+          ['InСopy $licdesktoprest',$licdesktoprest],
+          ['WebAdmin $licserverrest', $licserverrest],
+          ['Content Station $licserverrest', $licserverrest],
+        ]);
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div2'));
+        chart.draw(data, {width: 600, height: 340, is3D: true, title: ''});
+      }
+    </script>
+    <!--Div that will hold the pie chart-->
+
+<table  id="myTable">
+
+<tr>
+	<th> Используется</th>
+	<th> Осталось</th>
+</tr>
+
+<tr>
+ <td>    <div id="chart_div"></div> </td>
+   
+ <td>    <div id="chart_div2"></div> </td>
+<tr>
+<table>
+
+##parse("middle.vm")
+#parse("footer.vm")

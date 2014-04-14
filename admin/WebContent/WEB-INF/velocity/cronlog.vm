@@ -1,0 +1,44 @@
+#set($selected="cronlog")
+#parse("header.vm")
+##parse("topmenu.vm")
+#set( $count = 0 )
+
+
+
+<table id="docs" class="tablesorter" cellspacing="1">
+
+<thead>
+<tr>
+    <th>#</th>
+    <th>Задание</th>
+    <th>Результат выполнения</th>
+</tr>
+</thead>
+<tbody align="left">
+
+##foreach( $ticket in $ticketlist )
+#foreach( $log in $logs)
+#set( $count = $count + 1 )
+##if ($tools.getParity($count))
+##    #set($color="#f0f0f0")
+##else
+    #set($color="#ffffff")
+##end
+
+##set($user=$userService.getUser($ticket.Usr))
+##set($user=$ticketService.getUser($ticket.Usr))
+
+##set($user=$tm.getUser($ticket.Usr))
+
+<tr>
+<td>$count</td>
+<td>$log.Jobname</td>
+<td>$log.Result</td>
+</tr>
+#end
+
+</tbody>
+</table>
+
+##parse("middle.vm")
+#parse("footer.vm")

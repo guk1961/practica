@@ -1,0 +1,11 @@
+#set($selected="cs")
+#parse("header.vm")
+##parse("topmenu.vm")
+#set( $count = 0 )
+
+<div id="middle">
+
+<iframe src="http://enterprise/cs" width="100%" height="800"></iframe>
+</div> <!--id="middle"-->
+##parse("middle.vm")
+#parse("footer.vm")

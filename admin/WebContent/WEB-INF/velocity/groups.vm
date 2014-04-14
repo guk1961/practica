@@ -1,0 +1,69 @@
+#set($selected="groups")
+#parse("header.vm")
+##parse("topmenu.vm")
+#set( $count = 0 )
+#set( $num = 0 )
+
+##if ($pager && $pager.getPageLinks().size() > 1)
+
+
+
+    <!-- здесь выводим список -->
+<div class="pager-links">
+     
+<form action="" method="post" accept-charset="UTF-8"> 
+	 <input type="text" name="nameBox" value=$param.getName()>
+     <input type="submit" name="find" value="Поиск">
+
+
+Групп - <b>$groupsCount</b> 
+&nbsp страницы: #if ($pager && $pager.getPageLinks().size() > 1)
+    #foreach ($link in $pager.pageLinks)
+       #if ($link.Num==$pager.CurrentPage)
+            <b>$link</b>
+        #else
+            <u>$link</u>
+        #end
+    #end
+($pager.from ... $pager.to)
+   </div>
+#end
+
+#set( $count = ($pager.CurrentPage - 1)*$pager.PageSize )
+
+<table id="myTable" class="tablesorter" cellspacing="1">
+<thead>
+<th>#</th>
+<th colspan="2">Ф.И.О.</th>
+<th>Логин</th>
+<th>Email</th>
+</thead>
+#foreach( $group in $groups )
+#set( $count = $count + 1 )
+
+<tr>
+<th></th>
+<th colspan=3>  <a href="/$context/groups/$group.Id"><img src="/$context/images/xmag.png"></a>$group.Name  $group.Descr </img></th>
+<th></th>
+
+    #foreach( $user in $group.getUsers())
+      #set( $num = $num + 1 )
+     <tr>
+	   <td> $num </td>
+       <td bgcolor=$user.Trackchangescolor>&nbsp &nbsp</td>       
+       <td>
+	        <a href="/$context/users/$user.Id">$user.Fullname</a>
+       </td>
+	   <td> $user.User </td>
+	   <td> $user.Email </td>
+      </tr>    
+    #end
+    #set( $num = 0 )
+
+</tr>
+#end
+
+</table>
+##parse("middle.vm")
+#parse("footer.vm")
+

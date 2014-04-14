@@ -1,0 +1,11 @@
+<html>
+    <head>
+        <title>Output Page</title>
+    </head>
+  <body bgcolor="pink">
+ <h1><B>  <center> The OutPut is: </center></B></h1>
+ 
+ 
+             <big>  <center>     ${sum}</center></big>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+#set($selected="users")
+#parse("header.vm")
+##parse("topmenu.vm")
+#set( $count = 0 )
+
+
+<table id="myTable" class="tablesorter" cellspacing="1">
+<thead>
+<tr>
+<th colspan="5"><h2>Группа: $group.Name</h2> Пользователей -  $group.getUsers().size()
+</th>
+</tr>
+<tr>
+ <th><b></th>
+ <th colspan="2"><b>Ф.И.О.</th>
+ <th><b>Логин</a></th>
+ <th><b>Email</th>
+</tr>
+
+</thead>
+<tbody align="left">
+
+#foreach( $user in $group.getUsers() )
+#set( $count = $count + 1 )
+<tr>
+	<td>$count</td>
+	<td bgcolor=$user.Trackchangescolor></td>
+	<td><a href="/$context/users/$user.Id">$user.Fullname</a></td>
+	<td>$user.User</a></td>
+	<td>$user.Email</td>
+</tr>
+#end
+</tbody>
+</table>
+##parse("middle.vm")
+#parse("footer.vm")

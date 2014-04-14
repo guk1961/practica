@@ -1,0 +1,80 @@
+#set($selected="users")
+#parse("header.vm")
+##parse("topmenu.vm")
+#set( $count = 0 )
+
+
+
+   <!-- здесь выводим список -->
+
+<div class="pager-links">  
+<form action="" method="post" accept-charset="UTF-8"> 
+	 <input type="text" name="nameBox" value=$param.getName()>
+     <input type="submit" name="find" value="Поиск">
+
+
+Пользователей - <b>$usersCount</b> 
+<a href="tickets">Активные</a> - <b>$ticketService.getCount()</b>
+&nbsp страницы: #if ($pager && $pager.getPageLinks().size() > 1)
+
+    #foreach ($link in $pager.pageLinks)
+       #if ($link.Num==$pager.CurrentPage)
+            <b>$link</b>
+        #else
+            <u>$link</u>
+        #end
+    #end
+($pager.from ... $pager.to)
+<!--div class="pager-title"> Пользователи с $pager.from по $pager.to </div-->
+#end
+</div>
+
+#set( $count = ($pager.CurrentPage - 1)*$pager.PageSize )
+
+<table id="myTable" class="tablesorter" cellspacing="1">
+<thead>
+<tr>
+ <th>#</th>
+ <th colspan="2">ФИО</th>
+ <th>Логин</a></th>
+ <th>Email</th>
+ <th>Группы</th>
+ <th>Заблокирован</th>
+</tr>
+
+</thead>
+<tbody align="left">
+
+#foreach( $user in $users )
+#set($active="" )
+
+#set( $count = $count + 1 )
+##set($color="#ffffff")
+
+<tr>
+
+<td>$count</td>
+<td bgcolor=$user.Trackchangescolor></td>
+<td><a href=users/$user.Id>$user.Fullname</a></td>
+<td>$user.User</td>
+<td>$user.Email</td>
+<td>
+    #set( $num = 0 )
+    #foreach( $group in $user.getGroups())
+        #set( $num = $num + 1 )
+        $num :<a href="/$context/groups/$group.Id"> $group.Name</a>
+    </br>
+    #end
+</td>
+<td>$user.Disable</td>
+
+</tr>
+#end
+
+</tbody>
+</table>
+
+##parse("middle.vm")
+
+#parse("footer.vm")
+

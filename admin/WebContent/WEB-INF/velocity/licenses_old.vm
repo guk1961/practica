@@ -1,0 +1,131 @@
+#set($selected="licenses")
+#parse("header.vm")
+##parse("topmenu.vm")
+#set( $count = 0 )
+
+<div id="middle">
+
+#set( $count = 0 )
+#set( $licdesktop = 50 )
+#set( $licdesktoprest = 0 )
+#set( $licserver = 85 )
+#set( $licserverrest = 0 )
+#set( $liccs = 91 )
+#set( $liccsrest = 0 )
+
+#set($fio="-")
+#set($url="-")
+#set($web=0)
+#set($ind=0)
+#set($inc=0)
+#set($cs=0)
+#set($all=0)
+
+#set($webver="")
+#set($indver="")
+#set($incver="")
+#set($csver="")
+
+#foreach( $ticket in $ticketlist )
+    #if ("InDesign"==$ticket.Appname)
+        #set($ind=$ind+1)
+        #set($indver=$ticket.Appversion)
+    #end
+    #if ("InCopy"==$ticket.Appname)
+        #set($inc=$inc+1)
+        #set($incver=$ticket.Appversion)
+    #end
+    #if ("Web"==$ticket.Appname)
+        #set($web=$web+1)
+        #set($webver=$ticket.Appversion)
+    #end
+    #if ("Content Station"==$ticket.Appname)
+        #set($cs=$cs+1)
+        #set($csver=$ticket.Appversion)
+    #end
+#end
+#set( $all = $web+$ind+$inc+$cs)
+
+#set( $licdesktoprest = ($licdesktop - $ind - $inc))
+#set( $licserverrest = $licserver - $all )
+
+<table border="0" bgcolor="#f0f0f0">
+<tr>
+
+<th colspan="6"><h2>Состояние лицензий</h2>
+<a href="tickets">Активные пользователи</a> - $ticketlist.size()
+</th>
+</tr>
+
+<tr bgcolor=lightgray>
+    <td><b></td>
+    <td><b>Приложение</a></td>
+    <td><b>Версия</a></td>
+    <td><b>Используется</td>
+    <td><b>Осталось</td>
+</tr>
+
+#set( $count = $count + 1 )
+#if ($tools.getParity($count))
+    #set($color="#f0f0f0")
+#else
+    #set($color="#ffffff")
+#end
+
+<tr bgcolor=$color>
+<td>$count</td>
+<td>InDesign</td>
+<td>$indver</td>
+<td>$ind</td>
+<td>$licdesktoprest</td>
+#set( $count = $count + 1 )
+#if ($tools.getParity($count))
+    #set($color="#f0f0f0")
+#else
+    #set($color="#ffffff")
+#end
+</tr>
+<tr bgcolor=$color>
+<td>$count</td>
+<td>InCopy</td>
+<td>$incver</td>
+<td>$inc</td>
+<td>$licdesktoprest</td>
+
+#set( $count = $count + 1 )
+#if ($tools.getParity($count))
+    #set($color="#f0f0f0")
+#else
+    #set($color="#ffffff")
+#end
+
+</tr>
+<tr bgcolor=$color>
+<td>$count</td>
+<td allign="center">Web(Администратор)</td>
+<td>$webver</td>
+<td>$web</td>
+<td>$licserverrest</td>
+
+#set( $count = $count + 1 )
+#if ($tools.getParity($count))
+    #set($color="#f0f0f0")
+#else
+    #set($color="#ffffff")
+#end
+
+</tr>
+<tr bgcolor=$color>
+<td>$count</td>
+<td>Content Station</td>
+<td>$csver</td>
+<td>$cs</td>
+<td>$licserverrest</td>
+</tr>
+
+</table>
+
+</div> <!--id="middle"-->
+
+##parse("middle.vm")
+#parse("footer.vm")

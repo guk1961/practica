@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:task="http://www.springframework.org/schema/task"
+    xsi:schemaLocation="
+
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+
+
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+        
+
+<context:annotation-config />
+
+<mvc:annotation-driven />
+<mvc:resources mapping="/css/**" location="/css/"/>
+<mvc:resources mapping="/js/**" location="/js/"/>
+<mvc:resources mapping="/images/**" location="/images/"/>
+
+    <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+ 
+    <!-- Scans within the base package of the application for @Components to configure as beans -->
+    <!-- @Controller, @Service, @Configuration, etc. -->
+    <context:component-scan base-package="ru.adedit" />
+ 
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+    <property name="basename" value="WEB-INF/classes/messages" />
+    <property name="defaultEncoding" value="UTF-8"/>
+	</bean>
+    
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="cron"/>
+    </bean>
+   
+    <bean id="jpaTemplate" class="org.springframework.orm.jpa.JpaTemplate">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+  <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+  <tx:annotation-driven transaction-manager="transactionManager"/>	
+ 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+		<property name="jpaDialect" ref="jpaDialect" />
+	</bean>
+ 
+	<bean id="annotationTransactionAspect"
+		class="org.springframework.transaction.aspectj.AnnotationTransactionAspect"
+		factory-method="aspectOf">
+		<property name="transactionManager" ref="transactionManager" />
+	</bean>
+ 
+    <!-- Enables the Spring MVC @Controller programming model -->
+    <mvc:annotation-driven />
+   
+<bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+	<property name="resourceLoaderPath" value="/WEB-INF/velocity/"/> 
+<!-- 	<property name="configLocation" value="/WEB-INF/velocity/velocity.properties"/>
+ -->
+         <property name="velocityProperties">
+           <props>
+                 <prop key="input.encoding">UTF-8</prop>
+                 <prop key="output.encoding">UTF-8</prop>
+<!--                  <prop key="repository.encoding">UTF-8</prop> -->
+           </props>
+          </property>
+</bean>
+
+<bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+	<property name="cache" value="true"/>
+	<property name="prefix" value=""/>
+	<property name="suffix" value=".vm"/>
+	<property name="contentType" value="text/html; charset=UTF-8"/>
+	<property name="dateToolAttribute"><value>dateTool</value></property>
+</bean>
+ 
+   <bean id="publicationService" class="ru.adedit.cron.service.impl.SmartPublicationServiceImpl">
+		<property name="emf" ref="entityManagerFactory" />
+		<property name="jpaTemplate" ref="jpaTemplate" />
+   </bean>
+   
+   <bean id="publication" class="ru.adedit.cron.model.SmartPublication">
+   </bean>
+
+    <bean id="issueService" class="ru.adedit.cron.service.impl.SmartIssueServiceImpl">
+		<property name="emf" ref="entityManagerFactory" />
+		<property name="jpaTemplate" ref="jpaTemplate" />
+   </bean>
+   
+   <bean id="issue" class="ru.adedit.cron.model.SmartIssue">
+   </bean>
+    
+   <bean id="channelService" class="ru.adedit.cron.service.impl.SmartChannelServiceImpl">
+		<property name="emf" ref="entityManagerFactory" />
+		<property name="jpaTemplate" ref="jpaTemplate" />
+   </bean>
+   
+   <bean id="channel" class="ru.adedit.cron.model.SmartChannel">
+   </bean>
+   
+   <bean id="logService" class="ru.adedit.cron.service.impl.LogServiceImpl">
+		<property name="emf" ref="entityManagerFactory" />
+		<property name="jpaTemplate" ref="jpaTemplate" />
+   </bean>
+   <bean id="log" class="ru.adedit.cron.model.Log">
+   </bean>
+   
+   <bean id="smartUserService" class="ru.adedit.cron.service.impl.SmartUserServiceImpl">
+		<property name="emf" ref="entityManagerFactory" />
+		<property name="jpaTemplate" ref="jpaTemplate" />
+   </bean>
+   
+   <bean id="smartUser" class="ru.adedit.cron.model.SmartUsers">
+   </bean>
+
+   <bean id="smartGroupService" class="ru.adedit.cron.service.impl.SmartGroupServiceImpl">
+		<property name="emf" ref="entityManagerFactory" />
+		<property name="jpaTemplate" ref="jpaTemplate" />
+   </bean>
+   
+   <bean id="smartGroup" class="ru.adedit.cron.model.SmartGroups">
+   </bean>
+   
+   <bean id="ticketService" class="ru.adedit.cron.service.impl.SmartTicketServiceImpl">
+		<property name="emf" ref="entityManagerFactory" />
+		<property name="jpaTemplate" ref="jpaTemplate" />
+   </bean>
+   
+   <bean id="ticket" class="ru.adedit.cron.model.SmartTickets">
+   </bean>
+   
+   <bean id="stateService" class="ru.adedit.cron.service.impl.SmartStateServiceImpl">
+		<property name="emf" ref="entityManagerFactory" />
+		<property name="jpaTemplate" ref="jpaTemplate" />
+   </bean>
+   
+   <bean id="state" class="ru.adedit.cron.model.SmartStates">
+   </bean>
+   
+
+
+<!--    
+   <bean id="userService" class="ru.adedit.hc.service.admin.UserServiceImpl">
+		<property name="emf" ref="entityManagerFactory" />
+		<property name="jpaTemplate" ref="jpaTemplate" />
+	</bean>
+ -->	
+<!--  	<bean id="customUserDetailsService" class="ru.adedit.web.CustomUserDetailsService" /> -->
+	
+
+<task:annotation-driven executor="executor" scheduler="scheduler"/>
+ 	<task:executor id="executor" pool-size="5"/>
+ 	<task:scheduler id="scheduler" pool-size="10"/>
+
+<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+	<property name="corePoolSize" value="5" />
+	<property name="maxPoolSize" value="10" />
+	<property name="queueCapacity" value="25" />
+</bean>
+
+<bean id="taskExecutorExample" class="ru.adedit.cron.job.CurrentIssue">
+	<constructor-arg ref="taskExecutor" />
+</bean>
+
+<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	<property name="host" value="172.16.1.2"/>
+	<property name="defaultEncoding" value="UTF-8"/>
+</bean>
+<!-- this is a template message that we can pre-load with default state -->
+<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+	<property name="from" value="ferum@d-mir.ru"/>
+	<property name="subject" value="Перевод номера"/>
+</bean>
+<bean id="issueManager" class="ru.adedit.cron.service.mail.SimpleIssueManager">
+	<property name="mailSender" ref="mailSender"/>
+	<property name="templateMessage" ref="templateMessage"/>
+</bean>
+
+<bean id="issueMailManager" class="ru.adedit.cron.service.mail.IssueMailManager">
+	<property name="mailSender" ref="mailSender"/>
+	<property name="velocityEngine" ref="velocityEngine"/>
+</bean>
+
+
+<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+	<property name="velocityProperties">
+	    <props>
+ 	       <prop key="input.encoding">UTF-8</prop>
+	       <prop key="output.encoding">UTF-8</prop> 
+	        <prop key="resource.loader">class</prop>
+            <prop key="class.resource.loader.class">
+                org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+            </prop>
+        </props>
+<!--	<value>
+		resource.loader=class
+		class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+		input.encoding=UTF-8
+		output.encoding=UTF-8
+	</value>
+	 -->
+	</property>
+</bean>
+</beans>
+
+

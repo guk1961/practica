@@ -1,0 +1,28 @@
+#set($selected="home")
+#set($content="content.vm")
+#parse("header.vm")
+##parse("topmenu.vm")
+Главная страница
+
+<ul>
+    <li><a #if($selected=="home") class="cur" #end href="/$context/home">Главная</a></li>
+    <li><a #if($selected=="pubs") class="cur" #end href="/$context/pubs">Издания</a></li>
+    <li><a #if($selected=="groups") class="cur" #end href="/$context/groups">Группы</a></li>
+    <li><a #if($selected=="users") class="cur" #end href="/$context/users">Пользователи</a></li>
+    <li><a #if($selected=="tickets") class="cur" #end href="/$context/tickets">Активные</a></li>
+    <li><a #if($selected=="cronlog") class="cur" #end href="/$context/log">Задания</a></li>
+    <li><a #if($selected=="licenses") class="cur" #end href="/$context/licenses">Лицензии</a></li>
+
+ 	<li><a #if($selected=="proton") class="curright" #else class="rfloat"  #end href="/$context/proton">PROTON</a></li>
+    <li><a #if($selected=="romb") class="curright" #else class="rfloat" #end href="/$context/romb">ROMB</a></li>
+    <li><a #if($selected=="woodwing") class="curright" #else class="rfloat" #end href="/$context/woodwing">Woodwing</a></li>
+    <li><a #if($selected=="cs") class="curright" #else class="rfloat" #end  href="/$context/cs">CS</a></li>
+    <li><a #if($selected=="support") class="curright" #else class="rfloat" #end  href="/$context/support">Поддержка</a></li>
+    <li><a #if($selected=="forum") class="curright" #else class="rfloat" #end  href="/$context/forum">Форум</a></li>
+    <li><a #if($selected=="dmir") class="curright" #else class="rfloat" #end  href="/$context/dmir">Отчеты</a></li>
+
+</ul>
+
+
+##parse("middle.vm")
+#parse("footer.vm")

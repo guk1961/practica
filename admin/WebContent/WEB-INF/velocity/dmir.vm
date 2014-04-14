@@ -1,0 +1,12 @@
+#set($selected="dmir")
+#parse("header.vm")
+##parse("topmenu.vm")
+#set( $count = 0 )
+
+<div id="middle">
+
+<iframe src="http://enterprise/dmir" width="100%" height="800"></iframe>
+
+</div> <!--id="middle"-->
+##parse("middle.vm")
+#parse("footer.vm")

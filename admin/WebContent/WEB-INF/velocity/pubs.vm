@@ -1,0 +1,51 @@
+#set($selected="pubs")
+#parse("header.vm")
+##parse("topmenu.vm")
+#set( $count = 0 )
+
+
+<table id="myTable" class="tablesorter" cellspacing="1">
+<thead>
+<tr>
+ <th></th>
+ <th>Издание</th>
+ <th>Текущий номер</th>
+ <th>Дата публикации</a></th>
+ <th>Следующий номер</th>
+ <th>Дата публикации</th>
+</tr>
+
+</thead>
+
+#foreach( $pub in $pubs )
+##set( $pub.Description = $pub.Publication +"---"+$pub.Email)
+
+#set( $count = $count + 1 )
+##chs.getChannel(publicationId)
+
+#if ($pub.Code <100)
+#set($channel = $schs.getChannel($pub))
+#set($issueId = $channel.getCurrentissueid())
+#set($issue = $sis.getIssue($issueId))
+#set($data	=	$sis.getIssue($issueId).getDeadline())
+#set($nextIssue = $sis.getIssueNextPub($data, $channel))
+ 
+	<tr>
+	<td>$count</td>
+	<td><a href=$pub.Url>$pub.Publication</a></td>
+	#if ($issueId > 0)
+		<td bgcolor="#DDFFDD">$sis.getIssue($issueId).getName()</td>
+	#else
+		<td>номер не определен</td>
+	#end
+	<td bgcolor="#DDFFDD">$sis.getIssuePubDate($issue)</td>
+	<td>$nextIssue.getName()</td>
+	<td>$sis.getIssuePubDate($nextIssue)</td>
+	</tr>
+#end
+
+#end
+
+</table>
+##parse("middle.vm")
+#parse("footer.vm")

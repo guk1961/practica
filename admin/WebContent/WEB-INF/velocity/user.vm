@@ -1,0 +1,46 @@
+#set($selected="users")
+#parse("header.vm")
+##parse("topmenu.vm")
+#set( $count = 0 )
+
+
+
+<table id="myTable" class="tablesorter" cellspacing="1">
+<thead>
+<tr>
+<td bgcolor=$user.Trackchangescolor></td>
+<th colspan="4"><h2>$user.Fullname</h2> Групп, в которых состоит - $user.getGroups().size()
+</th>
+</tr>
+
+<tr>
+    <th></th>
+    <th>Группа</th>
+    <th>Примечание</a></th>
+    <th>Админ</th>
+    <th>Блокирован</th>
+</tr>
+
+</thead>
+<tbody>
+
+<tr>
+
+#foreach( $group in $user.getGroups() )
+	#set( $count = $count + 1 )
+<tr>
+
+<td>$count</td>
+<td><a href="/$context/groups/$group.Id">$group.Name</a></td>
+<td>$group.Descr</a></td>
+<td>$group.Admin</td>
+<td>$user.Disable</td>
+</tr>
+#end
+
+
+</tbody>
+</table>
+##parse("middle.vm")
+#parse("footer.vm")
+
