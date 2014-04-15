@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,7 +21,7 @@ import ru.adedit.cron.service.ISmartUserService;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping(value = "/home")//, method = RequestMethod.GET)
+//@RequestMapping(value = "/home")//, method = RequestMethod.GET)
 public class HomeController {
 
 	SmartPublication publication;// = new SmartPublication();
@@ -36,8 +37,9 @@ public class HomeController {
     
 
     
-    	@RequestMapping//(value = "/", method = RequestMethod.GET)
-  	    public String home(Model model) {
+//    	@RequestMapping//(value = "/", method = RequestMethod.GET)
+    	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	    public String home(Model model) {
         List<SmartPublication> pubs = (List<SmartPublication>) publicationService.getPublications();
         System.out.println("HomeController: Изданий: "+ pubs.size());
 //        for(SmartPublication pub:pubs){
@@ -55,4 +57,13 @@ public class HomeController {
         return "home";
         
     }    
+    	@RequestMapping(value = "/")
+        public String gohome(ModelMap model) {
+
+    		System.out.println("redirect home");
+            return "redirect:/home";
+//            return "redirect:/angular";
+        }
+
+    	
 }
