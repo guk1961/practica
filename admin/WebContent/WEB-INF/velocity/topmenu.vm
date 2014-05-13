@@ -1,20 +1,25 @@
-<div id="tabs">
-    <a #if($selected=="home") class="cur" #end href="/$context/home">Главная</a>
-    <a #if($selected=="pubs") class="cur" #end href="/$context/pubs">Издания</a>
-    <a #if($selected=="groups") class="cur" #end href="/$context/groups">Группы</a>
-<!--    <a #if($selected=="current") class="cur" #end href="/$context/current">Текущие номера</a>-->
-    <a #if($selected=="users") class="cur" #end href="/$context/users">Пользователи</a>
-    <a #if($selected=="tickets") class="cur" #end href="/$context/tickets">Активные</a>
-    <a #if($selected=="cronlog") class="cur" #end href="/$context/log">Задания</a>
-    <a #if($selected=="licenses") class="cur" #end href="/$context/licenses">Лицензии</a>
 
- 	<a #if($selected=="proton") class="curright" #else class="rfloat"  #end href="/$context/proton">PROTON</a>
-    <a #if($selected=="romb") class="curright" #else class="rfloat" #end href="/$context/romb">ROMB</a>
-    <a #if($selected=="woodwing") class="curright" #else class="rfloat" #end href="/$context/woodwing">Woodwing</a>
-    <a #if($selected=="cs") class="curright" #else class="rfloat" #end  href="/$context/cs">CS</a>
-    <a #if($selected=="support") class="curright" #else class="rfloat" #end  href="/$context/support">Поддержка</a>
-    <a #if($selected=="forum") class="curright" #else class="rfloat" #end  href="/$context/forum">Форум</a>
-    <a #if($selected=="dmir") class="curright" #else class="rfloat" #end  href="/$context/dmir">Отчеты</a>
-    
-</div><!--#tabs-->
+<ul class="nav nav-pills">
+    <li #if($selected=="home") class="active" #end>
+        <a href="/$context/home">Главная</a>
+    </li>
+    <li #if($selected=="pubs") class="active" #end>
+        <a href="/$context/pubs">Издания</a>
+    </li>
+    <li #if($selected=="groups") class="active" #end>
+        <a href="/$context/groups">Группы</a>
+    </li>
+    <li #if($selected=="users") class="active" #end>
+        <a href="/$context/users">Пользователи</a>
+    </li>
+	    <li #if($selected=="tickets") class="active" #end>
+        <a href="/$context/tickets">Активные</a>
+    </li>
+    <li #if($selected=="cronlog") class="active" #end>
+        <a href="/$context/log">Задания</a>
+    </li>
+    <li #if($selected=="licenses") class="active" #end>
+        <a href="/$context/licenses">Лицензии</a>
+    </li>
 
+</ul>

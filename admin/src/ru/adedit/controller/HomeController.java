@@ -21,7 +21,7 @@ import ru.adedit.cron.service.ISmartUserService;
  * Handles requests for the application home page.
  */
 @Controller
-//@RequestMapping(value = "/home")//, method = RequestMethod.GET)
+//@RequestMapping(value = "/")//, method = RequestMethod.GET)
 public class HomeController {
 
 	SmartPublication publication;// = new SmartPublication();

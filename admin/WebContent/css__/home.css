@@ -1,0 +1,258 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+
+html {height: 100%}
+
+body {
+	font: 12px/18px Arial, Tahoma, Verdana, sans-serif;
+/*	height: 100%;*/
+	background-color:#FFFFFF;
+/* background: #eeeeee;*/
+	margin:20px auto;
+	width:960px;
+	padding-left:10px;
+	padding-right:10px;
+}
+a {
+	color: blue;
+	outline: none;
+	text-decoration: underline;
+}
+a:hover {
+	text-decoration: none;
+}
+p {margin: 0 0 18px}
+img {
+	border: none;
+}
+input {vertical-align: middle}
+#wrapper {
+	width: 80%;
+	min-width: 1000px;
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+}
+
+
+/* Header
+-----------------------------------------------------------------------------*/
+#header {
+/*
+        min-width: 1280px;
+	height: 100px;
+	background: #FFE680;
+    background:url("images/bg.gif") no-repeat scroll 0 0 transparent;
+*/
+    background:url("../images/topbarlogo.png") no-repeat scroll 0 0 transparent;
+    height:100px;
+    position:relative;
+    /*
+    overflow:auto;
+    padding:6px;
+    position:relative;
+*/
+}
+.field {
+border:1px solid silver;
+}
+
+th.header {background-color: lightgray;
+    background-image: url(../img/small.gif);
+    cursor: pointer;
+    font-weight: bold;
+    background-repeat: no-repeat;
+    background-position: center left;
+    padding-left: 20px;
+    border-right: 1px solid #dad9c7;
+    margin-left: -1px;
+}
+
+#header_user {
+
+        right:0px;
+        padding-top: 15px;
+        margin-left:auto ;
+        width:270px;
+        height: 35px;
+/*	background-color:#ffe0e6;   */
+        text-align: right;
+
+
+}
+
+#header_find {
+/*        position:relative;*/
+        right:0px;
+        margin-left:auto ;
+        height: 30px;
+/*	background-color:#b0e0e6;*/
+        max-width: 200px;
+
+}
+
+/* Middle
+-----------------------------------------------------------------------------*/
+#middle {
+	width: 100%;
+	padding: 0 0 50px;
+	height: 1%;
+}
+#middle:after {
+	content: '.';
+	display: block;
+	clear: both;
+	visibility: hidden;
+	height: 0;
+}
+#container {
+	width: 100%;
+	float: left;
+	overflow: hidden;
+}
+#content {
+    /*background-color: #eeeeee;*/
+	padding-left: 270px;
+
+}
+
+/* Sidebar Left
+-----------------------------------------------------------------------------*/
+
+.sl {
+	float: left;
+	width: 250px;
+	padding-left: 10px;
+        margin-left:-100%;
+
+
+	position: relative;
+	background: #ffffff;
+
+/*        background-color:royalblue;
+color:white !important;*/
+color:black !important;
+
+}
+
+
+/* Footer
+-----------------------------------------------------------------------------*/
+#footer {
+        /*background-color:#6088FF;*/
+    background-color:royalblue;
+    color:#ffffff;
+	margin: -20px auto 0;
+/*	height: 20px;*/
+/*	float: left;*/
+/*	width:960px;*/
+    /*background: #BFF08E;*/
+    text-align: center;
+/*    margin:20px auto;*/
+/*	width:960px;
+	padding-left:10px;
+	padding-right:10px;*/
+	width: 100%;
+	padding: 0 0 50px;
+	
+}
+
+#middle TD{
+font-size: 12px;
+FONT-FAMILY: verdana,arial;
+color: #000000;
+}
+
+a:hover,a:active
+{
+
+background-color:royalblue;
+color:#FFFFFF;
+}
+
+/*--------------------ВКЛАДКИ МЕНЮ-----------------------------*/
+
+.rfloat {
+float:right !important;
+}
+#tabs {
+overflow:auto;
+padding:6px;
+position:relative;
+background-color:royalblue;
+
+}
+#tabs a {
+background-color:#6088FF;
+border:1px solid royalblue;
+color:white;
+display:block;
+float:left;
+font-size:120%;
+margin-right:6px;
+padding:0 6px 2px;
+text-decoration:none;
+}
+#tabs a.about {
+float:right;
+margin-right:0;
+}
+#tabs a.cur {
+background-color:royalblue;
+border-color:white;
+}
+#tabs a:link:hover, #tabs a:visited:hover {
+background-color:#88A6FF;
+color:white !important;
+}
+#tabs a.curright {
+	float:right !important;
+	background-color:royalblue;
+	border-color:white;
+}
+
+
+/*-------------------------------------------------------------*/
+
+
+#docs
+{
+font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+width:100%;
+border-collapse:collapse;
+}
+#docs td, #docs th
+{
+/*font-size:1em;*/
+text-align:left;
+border:1px solid #6088FF
+/*border:1px solid #98bf21;*/
+/*padding:3px 7px 2px 7px;*/
+}
+#docs th
+{
+text-align:left;
+/*font-size:1.1em;
+padding-top:1px;
+padding-bottom:1px;*/
+/*background-color:#A7C942;
+background-color:royalblue;*/
+background-color:royalblue;
+
+color:#ffffff;
+}
+#docs tr.alt td
+{
+color:#000000;
+/*background-color:#EAF2D3;*/
+background-color:royalblue;
+}
+
+
+
+
+
+

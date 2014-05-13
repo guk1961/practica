@@ -1,0 +1,141 @@
+
+body div#toolbar {
+top:30px;
+}
+
+#admin-menu {
+-x-system-font:none;
+font-family:"Lucida Grande",Verdana,sans-serif;
+font-size:11px;
+font-size-adjust:none;
+font-stretch:normal;
+font-style:normal;
+font-variant:normal;
+font-weight:normal;
+line-height:20px;
+}
+
+#admin-menu-wrapper {
+padding:5px 10px 0;
+}
+
+#admin-menu-shadow {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/modules/toolbar/toolbar.png) repeat-x scroll 0 -85px;
+bottom:-15px;
+height:15px;
+left:0;
+position:absolute;
+right:0;
+}
+
+#admin-menu li.admin-menu-icon > a {
+padding:3px 8px 2px;
+}
+body.admin-menu {
+margin-top:30px !important;
+}
+
+#admin-menu li.admin-menu-action a {
+border-left:0 none;
+}
+
+#admin-menu ul > li > a {
+border-right:0 none;
+margin-bottom:3px;
+padding:3px 8px;
+}
+
+#admin-menu ul li.admin-menu-toolbar-category > a {
+-moz-border-radius-bottomleft:10px;
+-moz-border-radius-bottomright:10px;
+-moz-border-radius-topleft:10px;
+-moz-border-radius-topright:10px;
+}
+
+#admin-menu ul li.admin-menu-toolbar-category > a.active-trail {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/modules/toolbar/toolbar.png) repeat-x scroll 0 0;
+text-shadow:0 1px 0 #333333;
+}
+
+#admin-menu ul li.admin-menu-toolbar-category > a:hover {
+background-color:#444444;
+}
+
+#admin-menu ul li.admin-menu-tab a {
+border-right:0 none;
+}
+
+#admin-menu li li.expandable ul {
+margin:-23px 0 0 160px;
+}
+
+#admin-menu li.admin-menu-shortcuts {
+float:right;
+}
+
+#admin-menu li.admin-menu-shortcuts span.toggle {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/modules/toolbar/toolbar.png) no-repeat scroll 0 -60px;
+cursor:pointer;
+display:block;
+height:25px;
+overflow:hidden;
+text-indent:-999px;
+width:25px;
+}
+
+#admin-menu li.admin-menu-shortcuts-active span.toggle {
+background-position:-25px -60px;
+}
+
+#admin-menu li.admin-menu-shortcuts-active ul {
+display:block !important;
+left:0 !important;
+width:100%;
+}
+
+#admin-menu li.admin-menu-shortcuts ul {
+background-color:#666666;
+padding:5px 10px;
+}
+
+#admin-menu li.admin-menu-shortcuts ul li {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent none repeat scroll 0 0;
+opacity:1;
+width:auto;
+}
+
+#admin-menu li.admin-menu-shortcuts ul li a {
+-moz-border-radius-bottomleft:5px;
+-moz-border-radius-bottomright:5px;
+-moz-border-radius-topleft:5px;
+-moz-border-radius-topright:5px;
+border-top:0 none;
+margin-right:5px;
+padding:5px 10px 5px 5px;
+}
+
+#admin-menu li.admin-menu-shortcuts ul li a:hover {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#555555 none repeat scroll 0 0;
+}
+
+#admin-menu li.admin-menu-shortcuts ul li a.active:hover, #admin-menu li.admin-menu-shortcuts ul li a.active {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent url(/modules/toolbar/toolbar.png) repeat-x scroll 0 -20px;
+}

@@ -2,21 +2,26 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-	<title>CRON PROTON</title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <script  type="text/javascript" src="/$context/js/jquery-1.9.1.js"></script>
-        <script type="text/javascript" src="/$context/js/jquery.tablesorter.js"></script>
+	<title>CRON</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+##	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+##    <!-- Bootstrap -->    <base href="http://localhost:8081/" />
+##    <base href="http://bw-woodwing:8081/fjob/" />
+    <!-- Bootstrap -->    <base href="http://localhost:8081/admin/" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+        <script  type="text/javascript" src="js/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="js/jquery.tablesorter.js"></script>
     <meta name="title" content="" />
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 <!--	<link rel="stylesheet" href="css/home.css" type="text/css" media="screen" />-->
-	<link rel="stylesheet" href="/$context/css/contented/style.css" type="text/css" media="screen" />
+<!--    	<link rel="stylesheet" href="css/contented/style.css" type="text/css" media="screen" />-->
 	
 	<script type="text/javascript" language="javascript">
 
 		jQuery(document).ready(function()
     	{
-    	    jQuery("#license").tablesorter();
+    	    jQuery("#person").tablesorter();
         	jQuery("#test").tablesorter();
         	jQuery("#myTable").tablesorter();
         	jQuery("#pubs").tablesorter();
@@ -29,37 +34,20 @@
 	);
 
   </script>
-	
 
 </head>
 <body>
-<div id="container"> 
 
-<div id="header">
+    <div class="page-header">
+        <h1> CRON<small> #if($countRecords)
+         найдено $countRecords из $countAllRecords #end</small></h1>
+    </div>
+<div class = "well well-small">
 
-<div id="title">Мониторинг РИС "ДМ-Редакция"</div>
 #parse("topmenu.vm")
 
-<!--
-<ul>
-<ul id="nav">
-    <li><a #if($selected=="dmir") class="selected" #end  href="/$context/dmir">Proton</a></li>
-    <li><a #if($selected=="cs") class="selected"  #end  href="/$context/cs">CS</a></li>
-    <li><a #if($selected=="licenses") class="selected" #end href="/$context/licenses">Лицензии</a></li>
-    <li><a #if($selected=="cronlog") class="selected" #end href="/$context/log">Задания</a></li>
-    <li><a #if($selected=="tickets") class="selected" #end href="/$context/tickets">Активные</a></li>
-    <li><a #if($selected=="users") class="selected" #end href="/$context/users">Пользователи</a></li>
-    <li><a #if($selected=="groups") class="selected" #end href="/$context/groups">Группы</a></li>
-    <li><a #if($selected=="pubs") class="selected" #end href="/$context/pubs">Издания</a></li>
-    <li><a #if($selected=="home") class="selected" #end href="/$context/home">Главная</a></li>
-</ul>
-</ul>
--->
-</div> <!-- end header -->
-
-
-<!--
-<div id="slogan">
-  Ничто не слишком!
 </div>
--->
+
+
+
+

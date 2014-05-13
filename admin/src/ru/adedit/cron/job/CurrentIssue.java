@@ -155,7 +155,7 @@ public final static String DATEFORMAT_FULL = "yyyy-MM-dd HH:mm:ss:SSS";
 		String test="2013-02-04T00:00:00";
     	_log.debug(test);
     	System.out.println((test.compareTo("2013-02-05")>0)+""+_log.getName());
-    	System.out.println(test.compareTo("111")==0);
+    	System.out.println(test.compareTo("111")>0);
     	System.out.println(test.compareTo("002")<0);
     	
 	}
